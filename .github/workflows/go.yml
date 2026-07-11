@@ -21,6 +21,9 @@ jobs:
       uses: actions/setup-go@v3
       with:
         go-version: ${{ matrix.go_version }}
+
+    - name: Show docker-compose
+      run: cat docker-compose.yml
       
     - name: Build-DB
       run: docker compose build
