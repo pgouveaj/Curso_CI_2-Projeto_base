@@ -24,14 +24,22 @@ jobs:
       
     - name: Build-DB
       run: docker compose build
-      
+
     - name: Create-DB
       run: docker compose up -d
 
+    - name: Check containers
+      run: docker compose ps
+
+    - name: Show PostgreSQL logs
+      run: docker compose logs postgres
+
+    - name: Wait for PostgreSQL
+      run: sleep 10
+
     - name: Test
-      run: go test -v main_test.go 
+      run: go test -v main_test.go
       
-  
   build:
     needs: test
     runs-on: ${{ matrix.os }}
