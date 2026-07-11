@@ -40,6 +40,12 @@ jobs:
     - name: Wait for PostgreSQL
       run: sleep 10
 
+    - name: Check containers
+      run: docker compose ps
+
+    - name: PostgreSQL logs
+      run: docker compose logs postgres
+      
     - name: Test
       run: go test -v main_test.go
       
